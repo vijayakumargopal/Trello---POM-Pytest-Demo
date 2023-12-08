@@ -5,6 +5,8 @@ import time
 from selenium.webdriver.common.by import By
 
 
+""" This page class contains all the methods related to the password page of the application """
+
 class PasswordPage(BasicActions, PasswordLocators):
 
     def __init__(self, driver):

@@ -2,10 +2,10 @@ from pages.basic_browser_actions import BasicActions
 from locators.email_page_locators import EmailPageLocators
 from pages.password_page import PasswordPage
 
+""" This page class contains all the methods related to the email page of the application """
+
 
 class EmailPage(BasicActions, EmailPageLocators):
-
-    """ This class represents the actions of the email page and its locators """
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -24,3 +24,12 @@ class EmailPage(BasicActions, EmailPageLocators):
         password_page = PasswordPage(self.driver)
         password_page.verify_email_label(email_id)
         return password_page
+
+    def verify_create_account_button_is_present(self):
+        self.element_should_be_displayed(self.create_account)
+
+    def verify_cannot_login_link_is_present(self):
+        self.element_should_be_displayed(self.cannot_login)
+
+    def verify_error_message(self):
+        self.element_should_be_displayed(self.error_enter_email_id)

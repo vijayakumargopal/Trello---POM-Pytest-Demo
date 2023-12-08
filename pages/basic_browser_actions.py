@@ -25,11 +25,6 @@ class BasicActions:
         self.logger = SingletonLogger()
         self.logger.logger.info("Basic actions class is initiated with browser driver value")
         self.driver = driver
-        self.wait_for_45_seconds = 45
-
-        """  HP ONE ELEMENTS """
-        self.toggle_button = (By.XPATH, '//button[@aria-label="Toggle Menu"]')
-        self.privacy_link_url = "https://www.hp.com/us-en/privacy/privacy.html"
 
     def type_words(self, locator, text):
         self.log_my_keyword_name_and_arguments()

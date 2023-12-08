@@ -3,6 +3,8 @@ from pages.basic_browser_actions import BasicActions
 from selenium.webdriver.common.by import By
 
 
+""" This page class contains all the methods related to the board page of the application """
+
 class BoardPage(BasicActions, BoardPageLocators):
 
     def __init__(self, driver):

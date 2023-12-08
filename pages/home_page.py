@@ -3,6 +3,8 @@ from pages.basic_browser_actions import BasicActions
 from pages.board_page import BoardPage
 
 
+""" This page class contains all the methods related to the home page of the application """
+
 class HomePage(BasicActions, HomeLocators):
 
     def __init__(self, driver):

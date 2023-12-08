@@ -1,0 +1,15 @@
+{
+    "browser": "chrome",
+    "list_of_browsers": [
+        "edge",
+        "firefox",
+        "chrome"
+    ],
+    "video record": true,
+    "environment": "stage",
+    "magento_environment": "pie",
+    "environments": {
+        "pie": "put_pie_url_here",
+        "stage": "https://id.atlassian.com/login"
+    }
+}

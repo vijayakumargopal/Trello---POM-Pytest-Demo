@@ -1,44 +1,37 @@
-Trello Website Automation For Demo 
+# Trello Web Automation
 
-Technologies Used: Python, Pytest, Selenium, PyTest, POM
+This repository contains a web automation script for automating actions on the Trello website using Python, Pytest, the Page Object Model (POM) pattern, and Selenium WebDriver.
 
-Selenium - Pytest:
-  Selenium is a module to do the web automation. Pytest is framework which will give you the structure of the execution
+## Project Structure
 
-POM
-  Page Object Model used to maintain the clear code base
+The project is organized into the following folders:
 
-Folder wise Explanation
-
-Data: 
-  Inputs for your test like browser name, credentials, environment, URL, etc.,
-  In this project, JSON file only presents, you can use multiple environments like, excel sheet, sqlite3 db, text file, ini file, etc., based on the requirement
-
-Drivers: 
-  Driver file for all the browser to trigger the browser
-
-Locators:
-
-  locators contains multiple python module which is used to store the locators of the each pages
-
-Pages:
-
-  Pages folder contains multiple python module. Each module contains the each page actions like entering data, clicking button, drag and drop, validating label, etc.,
-
-  Note: basic_browser_actions.py  This file contains more than 70+ keywords for web automation. You have to inherit this class into your pages and you can use all actions from here.
-
-Tests:
-
-  Test folder contains test cases of the each pages. 
-
-Reports:
-
-  Multiple type of reports generating.
-  1. HTML report with screen shot for failure using pytest
-  2. Video recording using pyautogui
-  3. log file using logger module
-
-Utilities:
-
-  Utility folder to write the python functions for your testing, fetching, api requests send, reading Input file, etc.,
+- **drivers:** Contains browser drivers for different web browsers.
   
+- **pages:** Includes page action modules, each representing a specific page on the Trello website.
+  
+- **locators:** Holds locator modules for each page, containing web element locators.
+  
+- **utilities:** Contains Python functions for various utility purposes, such as reading input files, recording videos, implementing logging mechanisms, etc.
+
+- **input_datas:** Stores input data for tests, including credentials, browser environment details, and other essential data.
+
+- **tests:** Consists of test cases using Pytest, leveraging the POM pattern for better code organization.
+
+## Technologies Used
+
+- **Python:** The primary programming language for scripting automation tasks.
+
+- **Pytest:** A testing framework for running test cases.
+
+- **Page Object Model (POM) pattern:** A design pattern for organizing and managing page actions and locators.
+
+- **Selenium WebDriver:** A powerful tool for automating web browsers.
+
+## Getting Started
+
+1. Clone this repository to your local machine.
+
+```bash
+git clone https://github.com/your-username/trello-web-automation.git
+cd trello-web-automation

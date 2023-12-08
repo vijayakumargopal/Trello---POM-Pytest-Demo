@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>automation_reports.html</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) { // eslint-disable-line no-redeclare
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function findAll(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sortColumn(elem) {
+    toggleSortStates(elem);
+    const colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    let key;
+    if (elem.classList.contains('result')) {
+        key = keyResult;
+    } else if (elem.classList.contains('links')) {
+        key = keyLink;
+    } else {
+        key = keyAlpha;
+    }
+    sortTable(elem, key(colIndex));
+}
+
+function showAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(showExtras);
+}
+
+function hideAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(hideExtras);
+}
+
+function showExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.remove('collapsed');
+    expandcollapse.classList.remove('expander');
+    expandcollapse.classList.add('collapser');
+}
+
+function hideExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.add('collapsed');
+    expandcollapse.classList.remove('collapser');
+    expandcollapse.classList.add('expander');
+}
+
+function showFilters() {
+    let visibleString = getQueryParameter('visible') || 'all';
+    visibleString = visibleString.toLowerCase();
+    const checkedItems = visibleString.split(',');
+
+    const filterItems = document.getElementsByClassName('filter');
+    for (let i = 0; i < filterItems.length; i++) {
+        filterItems[i].hidden = false;
+
+        if (visibleString != 'all') {
+            filterItems[i].checked = checkedItems.includes(filterItems[i].getAttribute('data-test-result'));
+            filterTable(filterItems[i]);
+        }
+    }
+}
+
+function addCollapse() {
+    // Add links for show/hide all
+    const resulttable = find('table#results-table');
+    const showhideall = document.createElement('p');
+    showhideall.innerHTML = '<a href="javascript:showAllExtras()">Show all details</a> / ' +
+                            '<a href="javascript:hideAllExtras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    findAll('.col-result').forEach(function(elem) {
+        const collapsed = getQueryParameter('collapsed') || 'Passed';
+        const extras = elem.parentNode.nextElementSibling;
+        const expandcollapse = document.createElement('span');
+        if (extras.classList.contains('collapsed')) {
+            expandcollapse.classList.add('expander');
+        } else if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add('collapsed');
+            expandcollapse.classList.add('expander');
+        } else {
+            expandcollapse.classList.add('collapser');
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener('click', function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains('collapsed')) {
+                showExtras(event.currentTarget);
+            } else {
+                hideExtras(event.currentTarget);
+            }
+        });
+    });
+}
+
+function getQueryParameter(name) {
+    const match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () { // eslint-disable-line no-unused-vars
+    resetSortHeaders();
+
+    addCollapse();
+
+    showFilters();
+
+    sortColumn(find('.initial-sort'));
+
+    findAll('.sortable').forEach(function(elem) {
+        elem.addEventListener('click',
+            function() {
+                sortColumn(elem);
+            }, false);
+    });
+}
+
+function sortTable(clicked, keyFunc) {
+    const rows = findAll('.results-table-row');
+    const reversed = !clicked.classList.contains('asc');
+    const sortedRows = sort(rows, keyFunc, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    const thead = document.getElementById('results-table-head');
+    document.getElementById('results-table').remove();
+    const parent = document.createElement('table');
+    parent.id = 'results-table';
+    parent.appendChild(thead);
+    sortedRows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName('BODY')[0].appendChild(parent);
+}
+
+function sort(items, keyFunc, reversed) {
+    const sortArray = items.map(function(item, i) {
+        return [keyFunc(item), i];
+    });
+
+    sortArray.sort(function(a, b) {
+        const keyA = a[0];
+        const keyB = b[0];
+
+        if (keyA == keyB) return 0;
+
+        if (reversed) {
+            return keyA < keyB ? 1 : -1;
+        } else {
+            return keyA > keyB ? 1 : -1;
+        }
+    });
+
+    return sortArray.map(function(item) {
+        const index = item[1];
+        return items[index];
+    });
+}
+
+function keyAlpha(colIndex) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[colIndex].firstChild.data.toLowerCase();
+    };
+}
+
+function keyLink(colIndex) {
+    return function(elem) {
+        const dataCell = elem.childNodes[1].childNodes[colIndex].firstChild;
+        return dataCell == null ? '' : dataCell.innerText.toLowerCase();
+    };
+}
+
+function keyResult(colIndex) {
+    return function(elem) {
+        const strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+            'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[colIndex].firstChild.data);
+    };
+}
+
+function resetSortHeaders() {
+    findAll('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    findAll('.sortable').forEach(function(elem) {
+        const icon = document.createElement('div');
+        icon.className = 'sort-icon';
+        icon.textContent = 'vvv';
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove('desc', 'active');
+        elem.classList.add('asc', 'inactive');
+    });
+}
+
+function toggleSortStates(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        resetSortHeaders();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function isAllRowsHidden(value) {
+    return value.hidden == false;
+}
+
+function filterTable(elem) { // eslint-disable-line no-unused-vars
+    const outcomeAtt = 'data-test-result';
+    const outcome = elem.getAttribute(outcomeAtt);
+    const classOutcome = outcome + ' results-table-row';
+    const outcomeRows = document.getElementsByClassName(classOutcome);
+
+    for(let i = 0; i < outcomeRows.length; i++){
+        outcomeRows[i].hidden = !elem.checked;
+    }
+
+    const rows = findAll('.results-table-row').filter(isAllRowsHidden);
+    const allRowsHidden = rows.length == 0 ? true : false;
+    const notFoundMessage = document.getElementById('not-found-message');
+    notFoundMessage.hidden = !allRowsHidden;
+}
+</script>
+    <h1>automation_reports.html</h1>
+    <p>Report generated on 08-Dec-2023 at 15:21:44 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>JAVA_HOME</td>
+        <td>C:\Program Files\Java\jdk-11</td></tr>
+      <tr>
+        <td>Packages</td>
+        <td>{"pluggy": "1.0.0", "pytest": "7.3.1"}</td></tr>
+      <tr>
+        <td>Platform</td>
+        <td>Windows-10-10.0.19041-SP0</td></tr>
+      <tr>
+        <td>Plugins</td>
+        <td>{"allure-pytest": "2.9.45", "anyio": "3.7.1", "bdd": "6.1.1", "failed-screenshot": "1.0.2", "html": "3.2.0", "metadata": "2.0.4", "recording": "0.13.0", "xdist": "3.3.1"}</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.7.0</td></tr></table>
+    <h2>Summary</h2>
+    <p>5 tests ran in 96.71 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">4 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable" col="duration">Duration</th>
+          <th class="sortable links" col="links">Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">tests/test_board_page.py::TestBoardPage::test_verify_board_page</td>
+          <td class="col-duration">28.19</td>
+          <td class="col-links"><a class="url" href="https://stage.myaccount.hp.com" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="C:\Users\GopalVij\Desktop\DemoCode\reports\screenshots\TestBoardPage_test_verify_board_page2023_12_08_15_20_34.png" alt="screenshot" style="width:300px;height:200px;" onclick="window.open(this.src)" align="right"></div></div>
+            <div class="log">self = &lt;tests.test_board_page.TestBoardPage object at 0x0000029893AB2CF8&gt;<br/><br/>    @pytest.mark.usefixtures(&quot;open_browser_test_startup&quot;)<br/>    def test_verify_board_page(self):<br/>        &quot;&quot;&quot;<br/>        To Run this test: pytest -k test_verify_board_page<br/>        Requirement Covered:<br/>            JIRA-3035<br/>        &quot;&quot;&quot;<br/>    <br/>        email_page = EmailPage(self.driver)<br/>        password_page = email_page.enter_email_id(&quot;vijayakumar.gopalbanu@gmail.com&quot;)<br/>        password_page.enter_password(&quot;Vijay@123&quot;)<br/>        home_page = password_page.click_login_button()<br/>        home_page.verify_header_label()<br/>        home_page.click_create_board_button()<br/>        home_page.enter_new_board_name(&quot;Test Board&quot;)<br/>        board_page = home_page.click_create_board_submit_button()<br/>        board_page.verify_board_title(&quot;Test Board&quot;)<br/>&gt;       board_page.add_card_in_to_do_section(&quot;Test Card1&quot;)<br/><br/>test_board_page.py:24: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>..\pages\board_page.py:20: in add_card_in_to_do_section<br/>    self.click_me(self.to_do_add_card_button)<br/>..\pages\basic_browser_actions.py:60: in click_me<br/>    element = self.get_web_element(locator)<br/>..\pages\basic_browser_actions.py:504: in get_web_element<br/>    element = self.driver.find_element(locator[0], locator[1])<br/>..\..\..\appdata\local\programs\python\python37\lib\site-packages\selenium\webdriver\remote\webdriver.py:739: in find_element<br/>    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]<br/>..\..\..\appdata\local\programs\python\python37\lib\site-packages\selenium\webdriver\remote\webdriver.py:345: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x0000029882CB6160&gt;<br/>response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;no such element: Unable to locate element: {\...jectPath [0x77017C6E+286]\\n\\tRtlGetAppContainerNamedObjectPath [0x77017C3E+238]\\n\\t(No symbol) [0x00000000]\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response: Dict[str, Any]) -&gt; None:<br/>        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an<br/>        error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&quot;status&quot;, None)<br/>        if not status or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&quot;value&quot;, None)<br/>            if value_json and isinstance(value_json, str):<br/>                import json<br/>    <br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value) == 1:<br/>                        value = value[&quot;value&quot;]<br/>                    status = value.get(&quot;error&quot;, None)<br/>                    if not status:<br/>                        status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)<br/>                        message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)<br/>                        if not isinstance(message, str):<br/>                            value = message<br/>                            message = message.get(&quot;message&quot;)<br/>                    else:<br/>                        message = value.get(&quot;message&quot;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class: Type[WebDriverException]<br/>        e = ErrorCode()<br/>        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]<br/>        for error_code in error_codes:<br/>            error_info = getattr(ErrorCode, error_code)<br/>            if isinstance(error_info, list) and status in error_info:<br/>                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)<br/>                break<br/>        else:<br/>            exception_class = WebDriverException<br/>    <br/>        if not value:<br/>            value = response[&quot;value&quot;]<br/>        if isinstance(value, str):<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &quot;message&quot; in value:<br/>            message = value[&quot;message&quot;]<br/>    <br/>        screen = None  # type: ignore[assignment]<br/>        if &quot;screen&quot; in value:<br/>            screen = value[&quot;screen&quot;]<br/>    <br/>        stacktrace = None<br/>        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)<br/>        if st_value:<br/>            if isinstance(st_value, str):<br/>                stacktrace = st_value.split(&quot;\n&quot;)<br/>            else:<br/>                stacktrace = []<br/>                try:<br/>                    for frame in st_value:<br/>                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)<br/>                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)<br/>                        if line:<br/>                            file = f&quot;{file}:{line}&quot;<br/>                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)<br/>                        if &quot;className&quot; in frame:<br/>                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;<br/>                        msg = &quot;    at %s (%s)&quot;<br/>                        msg = msg % (meth, file)<br/>                        stacktrace.append(msg)<br/>                except TypeError:<br/>                    pass<br/>        if exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &quot;data&quot; in value:<br/>                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)<br/>            elif &quot;alert&quot; in value:<br/>                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//h2[text()=&quot;To Do&quot;]/ancestor::li//button[@data-testid=&quot;list-add-card-button&quot;]&quot;}</span><br/><span class="error">E         (Session info: chrome=119.0.6045.200); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception</span><br/><span class="error">E       Stacktrace:</span><br/><span class="error">E       	GetHandleVerifier [0x002772A3+45731]</span><br/><span class="error">E       	(No symbol) [0x00202D51]</span><br/><span class="error">E       	(No symbol) [0x000F880D]</span><br/><span class="error">E       	(No symbol) [0x0012B940]</span><br/><span class="error">E       	(No symbol) [0x0012BE0B]</span><br/><span class="error">E       	(No symbol) [0x0015D1F2]</span><br/><span class="error">E       	(No symbol) [0x00148024]</span><br/><span class="error">E       	(No symbol) [0x0015B7A2]</span><br/><span class="error">E       	(No symbol) [0x00147DD6]</span><br/><span class="error">E       	(No symbol) [0x001231F6]</span><br/><span class="error">E       	(No symbol) [0x0012439D]</span><br/><span class="error">E       	GetHandleVerifier [0x00580716+3229462]</span><br/><span class="error">E       	GetHandleVerifier [0x005C84C8+3523784]</span><br/><span class="error">E       	GetHandleVerifier [0x005C214C+3498316]</span><br/><span class="error">E       	GetHandleVerifier [0x00301680+611968]</span><br/><span class="error">E       	(No symbol) [0x0020CCCC]</span><br/><span class="error">E       	(No symbol) [0x00208DF8]</span><br/><span class="error">E       	(No symbol) [0x00208F1D]</span><br/><span class="error">E       	(No symbol) [0x001FB2C7]</span><br/><span class="error">E       	BaseThreadInitThunk [0x74E6FCC9+25]</span><br/><span class="error">E       	RtlGetAppContainerNamedObjectPath [0x77017C6E+286]</span><br/><span class="error">E       	RtlGetAppContainerNamedObjectPath [0x77017C3E+238]</span><br/><span class="error">E       	(No symbol) [0x00000000]</span><br/><br/>..\..\..\appdata\local\programs\python\python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py:229: NoSuchElementException<br/> -----------------------------Captured stderr setup------------------------------ <br/>OpenCV: FFMPEG: tag 0x5634504d/&#x27;MP4V&#x27; is not supported with codec id 12 and format &#x27;mp4 / MP4 (MPEG-4 Part 14)&#x27;
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/&#x27;mp4v&#x27;
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_my_browser called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_chrome called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:451 chrome opened for testing
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 go_to_url called   Arguments=====&gt;: url=https://id.atlassian.com/login 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 maximize_browser_window called   Arguments=====&gt;: No arguments<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;name&#x27;, &#x27;username&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 type_words called   Arguments=====&gt;: locator=(&#x27;name&#x27;, &#x27;username&#x27;) text=vijayakumar.gopalbanu@gmail.com 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 check_text_of_object called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) text_to_compare=vijayakumar.gopalbanu@gmail.com 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_attribute_value called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) attribute=text 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;password&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 type_words called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;password&#x27;) text=Vijay@123 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 element_displayed called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) timeout=5 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) timeout=5 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h3[text()=&quot;YOUR WORKSPACES&quot;]&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h3[text()=&quot;YOUR WORKSPACES&quot;]&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//li[@data-testid=&quot;create-board-tile&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//li[@data-testid=&quot;create-board-tile&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//input[@data-testid=&quot;create-board-title-input&quot;]&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 type_words called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//input[@data-testid=&quot;create-board-title-input&quot;]&#x27;) text=Test Board 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//button[text()=&quot;Create&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//button[text()=&quot;Create&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h1[@data-testid=&quot;board-name-display&quot;]&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//button[contains(@aria-label, &quot;Cancel&quot;)]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//button[contains(@aria-label, &quot;Cancel&quot;)]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 check_text_of_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h1[@data-testid=&quot;board-name-display&quot;]&#x27;) text_to_compare=Test Board 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_attribute_value called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h1[@data-testid=&quot;board-name-display&quot;]&#x27;) attribute=text 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h1[@data-testid=&quot;board-name-display&quot;]&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h2[text()=&quot;To Do&quot;]/ancestor::li//button[@data-testid=&quot;list-add-card-button&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h2[text()=&quot;To Do&quot;]/ancestor::li//button[@data-testid=&quot;list-add-card-button&quot;]&#x27;)<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:527 close_browser called   Arguments=====&gt;: No arguments<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_email_page.py::TestEmailPage::test_verify_email_page</td>
+          <td class="col-duration">8.45</td>
+          <td class="col-links"><a class="url" href="https://stage.myaccount.hp.com" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stderr setup------------------------------ <br/>OpenCV: FFMPEG: tag 0x5634504d/&#x27;MP4V&#x27; is not supported with codec id 12 and format &#x27;mp4 / MP4 (MPEG-4 Part 14)&#x27;
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/&#x27;mp4v&#x27;
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_my_browser called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_chrome called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:451 chrome opened for testing
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 go_to_url called   Arguments=====&gt;: url=https://id.atlassian.com/login 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 maximize_browser_window called   Arguments=====&gt;: No arguments<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &quot;//h5[text()=&#x27;Log in to continue&#x27;]&quot;) timeout=None<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:527 close_browser called   Arguments=====&gt;: No arguments<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_email_page.py::TestEmailPage::test_verify_email_id_label</td>
+          <td class="col-duration">9.16</td>
+          <td class="col-links"><a class="url" href="https://stage.myaccount.hp.com" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stderr setup------------------------------ <br/>OpenCV: FFMPEG: tag 0x5634504d/&#x27;MP4V&#x27; is not supported with codec id 12 and format &#x27;mp4 / MP4 (MPEG-4 Part 14)&#x27;
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/&#x27;mp4v&#x27;
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_my_browser called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_chrome called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:451 chrome opened for testing
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 go_to_url called   Arguments=====&gt;: url=https://id.atlassian.com/login 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 maximize_browser_window called   Arguments=====&gt;: No arguments<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;name&#x27;, &#x27;username&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 type_words called   Arguments=====&gt;: locator=(&#x27;name&#x27;, &#x27;username&#x27;) text=vijayakumar.gopalbanu@gmail.com 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 check_text_of_object called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) text_to_compare=vijayakumar.gopalbanu@gmail.com 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_attribute_value called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) attribute=text 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) timeout=None<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:527 close_browser called   Arguments=====&gt;: No arguments<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_home_page.py::TestHomePage::test_verify_home_page</td>
+          <td class="col-duration">26.22</td>
+          <td class="col-links"><a class="url" href="https://stage.myaccount.hp.com" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stderr setup------------------------------ <br/>OpenCV: FFMPEG: tag 0x5634504d/&#x27;MP4V&#x27; is not supported with codec id 12 and format &#x27;mp4 / MP4 (MPEG-4 Part 14)&#x27;
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/&#x27;mp4v&#x27;
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_my_browser called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_chrome called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:451 chrome opened for testing
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 go_to_url called   Arguments=====&gt;: url=https://id.atlassian.com/login 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 maximize_browser_window called   Arguments=====&gt;: No arguments<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;name&#x27;, &#x27;username&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 type_words called   Arguments=====&gt;: locator=(&#x27;name&#x27;, &#x27;username&#x27;) text=vijayakumar.gopalbanu@gmail.com 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 check_text_of_object called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) text_to_compare=vijayakumar.gopalbanu@gmail.com 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_attribute_value called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) attribute=text 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;password&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 type_words called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;password&#x27;) text=Vijay@123 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 element_displayed called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) timeout=5 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) timeout=5 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h3[text()=&quot;YOUR WORKSPACES&quot;]&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h3[text()=&quot;YOUR WORKSPACES&quot;]&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//li[@data-testid=&quot;create-board-tile&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//li[@data-testid=&quot;create-board-tile&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//input[@data-testid=&quot;create-board-title-input&quot;]&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 type_words called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//input[@data-testid=&quot;create-board-title-input&quot;]&#x27;) text=Test Board 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//button[text()=&quot;Create&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//button[text()=&quot;Create&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h1[@data-testid=&quot;board-name-display&quot;]&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//button[contains(@aria-label, &quot;Cancel&quot;)]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//button[contains(@aria-label, &quot;Cancel&quot;)]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 check_text_of_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h1[@data-testid=&quot;board-name-display&quot;]&#x27;) text_to_compare=Test Board 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_attribute_value called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h1[@data-testid=&quot;board-name-display&quot;]&#x27;) attribute=text 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h1[@data-testid=&quot;board-name-display&quot;]&#x27;) timeout=None<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:527 close_browser called   Arguments=====&gt;: No arguments<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_password_page.py::TestPasswordPage::test_verify_password_page</td>
+          <td class="col-duration">23.50</td>
+          <td class="col-links"><a class="url" href="https://stage.myaccount.hp.com" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stderr setup------------------------------ <br/>OpenCV: FFMPEG: tag 0x5634504d/&#x27;MP4V&#x27; is not supported with codec id 12 and format &#x27;mp4 / MP4 (MPEG-4 Part 14)&#x27;
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/&#x27;mp4v&#x27;
+<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_my_browser called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 open_chrome called   Arguments=====&gt;: No arguments
+INFO     utilities.pytest_logger:basic_browser_actions.py:451 chrome opened for testing
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 go_to_url called   Arguments=====&gt;: url=https://id.atlassian.com/login 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 maximize_browser_window called   Arguments=====&gt;: No arguments<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;name&#x27;, &#x27;username&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 type_words called   Arguments=====&gt;: locator=(&#x27;name&#x27;, &#x27;username&#x27;) text=vijayakumar.gopalbanu@gmail.com 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 check_text_of_object called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) text_to_compare=vijayakumar.gopalbanu@gmail.com 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_attribute_value called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) attribute=text 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;class name&#x27;, &#x27;css-eznkzx&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;password&#x27;) timeout=None 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 type_words called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;password&#x27;) text=Vijay@123 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;id&#x27;, &#x27;login-submit&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 element_displayed called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) timeout=5 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) timeout=5 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 click_me called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 get_web_element called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//div[@data-testid=&quot;start-product__TRELLO_TRELLO&quot;]&#x27;) 
+INFO     utilities.pytest_logger:basic_browser_actions.py:65 element clicked using selenium
+INFO     utilities.pytest_logger:basic_browser_actions.py:26 Basic actions class is initiated with browser driver value
+INFO     utilities.pytest_logger:basic_browser_actions.py:527 wait_for_object called   Arguments=====&gt;: locator=(&#x27;xpath&#x27;, &#x27;//h3[text()=&quot;YOUR WORKSPACES&quot;]&#x27;) timeout=None<br/> -----------------------------Captured log teardown------------------------------ <br/>INFO     utilities.pytest_logger:basic_browser_actions.py:527 close_browser called   Arguments=====&gt;: No arguments<br/></div></td></tr></tbody></table></body></html>

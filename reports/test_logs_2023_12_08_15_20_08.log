@@ -1,0 +1,152 @@
+2023-12-08 15:20:08,325 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:08,325 - INFO - open_my_browser called   Arguments=====>: No arguments
+2023-12-08 15:20:08,325 - INFO - open_chrome called   Arguments=====>: No arguments
+2023-12-08 15:20:09,953 - INFO - chrome opened for testing
+2023-12-08 15:20:09,953 - INFO - go_to_url called   Arguments=====>: url=https://id.atlassian.com/login 
+2023-12-08 15:20:12,904 - INFO - maximize_browser_window called   Arguments=====>: No arguments
+2023-12-08 15:20:13,114 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:13,115 - INFO - wait_for_object called   Arguments=====>: locator=('name', 'username') timeout=None 
+2023-12-08 15:20:14,178 - INFO - type_words called   Arguments=====>: locator=('name', 'username') text=vijayakumar.gopalbanu@gmail.com 
+2023-12-08 15:20:14,535 - INFO - click_me called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:20:14,535 - INFO - get_web_element called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:20:14,673 - INFO - element clicked using selenium
+2023-12-08 15:20:14,673 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:14,673 - INFO - check_text_of_object called   Arguments=====>: locator=('class name', 'css-eznkzx') text_to_compare=vijayakumar.gopalbanu@gmail.com 
+2023-12-08 15:20:14,673 - INFO - get_attribute_value called   Arguments=====>: locator=('class name', 'css-eznkzx') attribute=text 
+2023-12-08 15:20:14,673 - INFO - wait_for_object called   Arguments=====>: locator=('class name', 'css-eznkzx') timeout=None 
+2023-12-08 15:20:14,754 - INFO - wait_for_object called   Arguments=====>: locator=('id', 'password') timeout=None 
+2023-12-08 15:20:16,778 - INFO - type_words called   Arguments=====>: locator=('id', 'password') text=Vijay@123 
+2023-12-08 15:20:16,951 - INFO - click_me called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:20:16,951 - INFO - get_web_element called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:20:17,050 - INFO - element clicked using selenium
+2023-12-08 15:20:17,051 - INFO - element_displayed called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') timeout=5 
+2023-12-08 15:20:17,051 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') timeout=5 
+2023-12-08 15:20:23,528 - INFO - click_me called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') 
+2023-12-08 15:20:23,528 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') 
+2023-12-08 15:20:29,477 - INFO - element clicked using selenium
+2023-12-08 15:20:29,477 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:29,477 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//h3[text()="YOUR WORKSPACES"]') timeout=None 
+2023-12-08 15:20:29,500 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//h3[text()="YOUR WORKSPACES"]') timeout=None 
+2023-12-08 15:20:29,511 - INFO - click_me called   Arguments=====>: locator=('xpath', '//li[@data-testid="create-board-tile"]') 
+2023-12-08 15:20:29,511 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//li[@data-testid="create-board-tile"]') 
+2023-12-08 15:20:29,674 - INFO - element clicked using selenium
+2023-12-08 15:20:29,675 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//input[@data-testid="create-board-title-input"]') timeout=None 
+2023-12-08 15:20:30,212 - INFO - type_words called   Arguments=====>: locator=('xpath', '//input[@data-testid="create-board-title-input"]') text=Test Board 
+2023-12-08 15:20:30,584 - INFO - click_me called   Arguments=====>: locator=('xpath', '//button[text()="Create"]') 
+2023-12-08 15:20:30,584 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//button[text()="Create"]') 
+2023-12-08 15:20:30,698 - INFO - element clicked using selenium
+2023-12-08 15:20:30,698 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:30,698 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//h1[@data-testid="board-name-display"]') timeout=None 
+2023-12-08 15:20:34,001 - INFO - click_me called   Arguments=====>: locator=('xpath', '//button[contains(@aria-label, "Cancel")]') 
+2023-12-08 15:20:34,001 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//button[contains(@aria-label, "Cancel")]') 
+2023-12-08 15:20:34,089 - INFO - element clicked using selenium
+2023-12-08 15:20:34,089 - INFO - check_text_of_object called   Arguments=====>: locator=('xpath', '//h1[@data-testid="board-name-display"]') text_to_compare=Test Board 
+2023-12-08 15:20:34,089 - INFO - get_attribute_value called   Arguments=====>: locator=('xpath', '//h1[@data-testid="board-name-display"]') attribute=text 
+2023-12-08 15:20:34,089 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//h1[@data-testid="board-name-display"]') timeout=None 
+2023-12-08 15:20:34,184 - INFO - click_me called   Arguments=====>: locator=('xpath', '//h2[text()="To Do"]/ancestor::li//button[@data-testid="list-add-card-button"]') 
+2023-12-08 15:20:34,184 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//h2[text()="To Do"]/ancestor::li//button[@data-testid="list-add-card-button"]') 
+2023-12-08 15:20:34,887 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:34,887 - INFO - capture_screenshot called   Arguments=====>: filename=C:\Users\GopalVij\Desktop\DemoCode\reports\screenshots\TestBoardPage_test_verify_board_page2023_12_08_15_20_34.png 
+2023-12-08 15:20:35,309 - INFO - screen shot is captured and saved in the name of C:\Users\GopalVij\Desktop\DemoCode\reports\screenshots\TestBoardPage_test_verify_board_page2023_12_08_15_20_34.png
+2023-12-08 15:20:37,368 - INFO - close_browser called   Arguments=====>: No arguments
+2023-12-08 15:20:37,617 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:37,617 - INFO - open_my_browser called   Arguments=====>: No arguments
+2023-12-08 15:20:37,617 - INFO - open_chrome called   Arguments=====>: No arguments
+2023-12-08 15:20:39,225 - INFO - chrome opened for testing
+2023-12-08 15:20:39,225 - INFO - go_to_url called   Arguments=====>: url=https://id.atlassian.com/login 
+2023-12-08 15:20:42,058 - INFO - maximize_browser_window called   Arguments=====>: No arguments
+2023-12-08 15:20:42,238 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:42,239 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', "//h5[text()='Log in to continue']") timeout=None 
+2023-12-08 15:20:45,886 - INFO - close_browser called   Arguments=====>: No arguments
+2023-12-08 15:20:46,083 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:46,083 - INFO - open_my_browser called   Arguments=====>: No arguments
+2023-12-08 15:20:46,084 - INFO - open_chrome called   Arguments=====>: No arguments
+2023-12-08 15:20:47,629 - INFO - chrome opened for testing
+2023-12-08 15:20:47,630 - INFO - go_to_url called   Arguments=====>: url=https://id.atlassian.com/login 
+2023-12-08 15:20:50,324 - INFO - maximize_browser_window called   Arguments=====>: No arguments
+2023-12-08 15:20:52,515 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:52,515 - INFO - wait_for_object called   Arguments=====>: locator=('name', 'username') timeout=None 
+2023-12-08 15:20:52,529 - INFO - type_words called   Arguments=====>: locator=('name', 'username') text=vijayakumar.gopalbanu@gmail.com 
+2023-12-08 15:20:52,839 - INFO - click_me called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:20:52,839 - INFO - get_web_element called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:20:52,914 - INFO - element clicked using selenium
+2023-12-08 15:20:52,914 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:52,914 - INFO - check_text_of_object called   Arguments=====>: locator=('class name', 'css-eznkzx') text_to_compare=vijayakumar.gopalbanu@gmail.com 
+2023-12-08 15:20:52,914 - INFO - get_attribute_value called   Arguments=====>: locator=('class name', 'css-eznkzx') attribute=text 
+2023-12-08 15:20:52,914 - INFO - wait_for_object called   Arguments=====>: locator=('class name', 'css-eznkzx') timeout=None 
+2023-12-08 15:20:55,064 - INFO - close_browser called   Arguments=====>: No arguments
+2023-12-08 15:20:55,254 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:55,254 - INFO - open_my_browser called   Arguments=====>: No arguments
+2023-12-08 15:20:55,255 - INFO - open_chrome called   Arguments=====>: No arguments
+2023-12-08 15:20:56,883 - INFO - chrome opened for testing
+2023-12-08 15:20:56,885 - INFO - go_to_url called   Arguments=====>: url=https://id.atlassian.com/login 
+2023-12-08 15:20:59,302 - INFO - maximize_browser_window called   Arguments=====>: No arguments
+2023-12-08 15:20:59,460 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:20:59,460 - INFO - wait_for_object called   Arguments=====>: locator=('name', 'username') timeout=None 
+2023-12-08 15:21:00,582 - INFO - type_words called   Arguments=====>: locator=('name', 'username') text=vijayakumar.gopalbanu@gmail.com 
+2023-12-08 15:21:00,935 - INFO - click_me called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:21:00,935 - INFO - get_web_element called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:21:01,014 - INFO - element clicked using selenium
+2023-12-08 15:21:01,014 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:21:01,014 - INFO - check_text_of_object called   Arguments=====>: locator=('class name', 'css-eznkzx') text_to_compare=vijayakumar.gopalbanu@gmail.com 
+2023-12-08 15:21:01,014 - INFO - get_attribute_value called   Arguments=====>: locator=('class name', 'css-eznkzx') attribute=text 
+2023-12-08 15:21:01,014 - INFO - wait_for_object called   Arguments=====>: locator=('class name', 'css-eznkzx') timeout=None 
+2023-12-08 15:21:01,123 - INFO - wait_for_object called   Arguments=====>: locator=('id', 'password') timeout=None 
+2023-12-08 15:21:03,138 - INFO - type_words called   Arguments=====>: locator=('id', 'password') text=Vijay@123 
+2023-12-08 15:21:03,291 - INFO - click_me called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:21:03,291 - INFO - get_web_element called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:21:03,355 - INFO - element clicked using selenium
+2023-12-08 15:21:03,355 - INFO - element_displayed called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') timeout=5 
+2023-12-08 15:21:03,355 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') timeout=5 
+2023-12-08 15:21:09,348 - INFO - click_me called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') 
+2023-12-08 15:21:09,348 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') 
+2023-12-08 15:21:14,877 - INFO - element clicked using selenium
+2023-12-08 15:21:14,877 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:21:14,877 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//h3[text()="YOUR WORKSPACES"]') timeout=None 
+2023-12-08 15:21:14,902 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//h3[text()="YOUR WORKSPACES"]') timeout=None 
+2023-12-08 15:21:14,919 - INFO - click_me called   Arguments=====>: locator=('xpath', '//li[@data-testid="create-board-tile"]') 
+2023-12-08 15:21:14,919 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//li[@data-testid="create-board-tile"]') 
+2023-12-08 15:21:15,084 - INFO - element clicked using selenium
+2023-12-08 15:21:15,085 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//input[@data-testid="create-board-title-input"]') timeout=None 
+2023-12-08 15:21:15,685 - INFO - type_words called   Arguments=====>: locator=('xpath', '//input[@data-testid="create-board-title-input"]') text=Test Board 
+2023-12-08 15:21:15,952 - INFO - click_me called   Arguments=====>: locator=('xpath', '//button[text()="Create"]') 
+2023-12-08 15:21:15,952 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//button[text()="Create"]') 
+2023-12-08 15:21:16,070 - INFO - element clicked using selenium
+2023-12-08 15:21:16,070 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:21:16,081 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//h1[@data-testid="board-name-display"]') timeout=None 
+2023-12-08 15:21:19,111 - INFO - click_me called   Arguments=====>: locator=('xpath', '//button[contains(@aria-label, "Cancel")]') 
+2023-12-08 15:21:19,111 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//button[contains(@aria-label, "Cancel")]') 
+2023-12-08 15:21:19,192 - INFO - element clicked using selenium
+2023-12-08 15:21:19,192 - INFO - check_text_of_object called   Arguments=====>: locator=('xpath', '//h1[@data-testid="board-name-display"]') text_to_compare=Test Board 
+2023-12-08 15:21:19,192 - INFO - get_attribute_value called   Arguments=====>: locator=('xpath', '//h1[@data-testid="board-name-display"]') attribute=text 
+2023-12-08 15:21:19,192 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//h1[@data-testid="board-name-display"]') timeout=None 
+2023-12-08 15:21:21,296 - INFO - close_browser called   Arguments=====>: No arguments
+2023-12-08 15:21:21,475 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:21:21,476 - INFO - open_my_browser called   Arguments=====>: No arguments
+2023-12-08 15:21:21,476 - INFO - open_chrome called   Arguments=====>: No arguments
+2023-12-08 15:21:23,172 - INFO - chrome opened for testing
+2023-12-08 15:21:23,173 - INFO - go_to_url called   Arguments=====>: url=https://id.atlassian.com/login 
+2023-12-08 15:21:25,919 - INFO - maximize_browser_window called   Arguments=====>: No arguments
+2023-12-08 15:21:26,106 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:21:26,106 - INFO - wait_for_object called   Arguments=====>: locator=('name', 'username') timeout=None 
+2023-12-08 15:21:27,740 - INFO - type_words called   Arguments=====>: locator=('name', 'username') text=vijayakumar.gopalbanu@gmail.com 
+2023-12-08 15:21:28,173 - INFO - click_me called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:21:28,173 - INFO - get_web_element called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:21:28,255 - INFO - element clicked using selenium
+2023-12-08 15:21:28,256 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:21:28,256 - INFO - check_text_of_object called   Arguments=====>: locator=('class name', 'css-eznkzx') text_to_compare=vijayakumar.gopalbanu@gmail.com 
+2023-12-08 15:21:28,256 - INFO - get_attribute_value called   Arguments=====>: locator=('class name', 'css-eznkzx') attribute=text 
+2023-12-08 15:21:28,256 - INFO - wait_for_object called   Arguments=====>: locator=('class name', 'css-eznkzx') timeout=None 
+2023-12-08 15:21:28,333 - INFO - wait_for_object called   Arguments=====>: locator=('id', 'password') timeout=None 
+2023-12-08 15:21:30,359 - INFO - type_words called   Arguments=====>: locator=('id', 'password') text=Vijay@123 
+2023-12-08 15:21:30,506 - INFO - click_me called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:21:30,506 - INFO - get_web_element called   Arguments=====>: locator=('id', 'login-submit') 
+2023-12-08 15:21:30,574 - INFO - element clicked using selenium
+2023-12-08 15:21:30,574 - INFO - element_displayed called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') timeout=5 
+2023-12-08 15:21:30,582 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') timeout=5 
+2023-12-08 15:21:36,674 - INFO - click_me called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') 
+2023-12-08 15:21:36,674 - INFO - get_web_element called   Arguments=====>: locator=('xpath', '//div[@data-testid="start-product__TRELLO_TRELLO"]') 
+2023-12-08 15:21:36,819 - INFO - element clicked using selenium
+2023-12-08 15:21:36,819 - INFO - Basic actions class is initiated with browser driver value
+2023-12-08 15:21:36,819 - INFO - wait_for_object called   Arguments=====>: locator=('xpath', '//h3[text()="YOUR WORKSPACES"]') timeout=None 
+2023-12-08 15:21:44,806 - INFO - close_browser called   Arguments=====>: No arguments

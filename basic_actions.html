@@ -1,0 +1,2749 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keywords and Descriptions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Add some basic styling */
+        body {
+            color: black;
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .keyword_container
+        {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 3px;
+            padding: 0.5rem 1.0rem 0.5rem 1.0rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            scroll-margin-top: 60px;
+            margin: 12px;
+            padding: 8px 32px;
+        }
+        h2{
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .kw-docs {
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        h1{
+            font-family: sans-serif;
+            margin-left: 12px;
+        }
+
+        #author_name
+        {
+            animation-name: author;
+            animation-duration: 4s;
+           float: right;
+           font-size: 16px;
+           padding: 4px;
+        }
+        @keyframes author
+        {
+          0%   {background-color: yellow;}
+          25%  {background-color: orange;}
+          50%  {background-color: skyblue;}
+          100% {background-color: sandal;}
+        }
+    </style>
+</head>
+<body>
+    <div  id="author_name"> Author: Vijayakumar G </div>
+
+    <h1>Keywords and Descriptions</h1>
+    <div style="margin: 20px;font-size: 16px;">
+        <a href="#accept_the_alert">accept_the_alert</a> |
+        <a href="#alert_text_should_be">alert_text_should_be</a> |
+        <a href="#append_text">append_text</a> |
+        <a href="#back_to_body_from_frame">back_to_body_from_frame</a> |
+        <a href="#capture_screenshot">capture_screenshot</a> |
+        <a href="#change_screen_size">change_screen_size</a> |
+        <a href="#check_text_of_object">check_text_of_object</a> |
+        <a href="#clear_field">clear_field</a> |
+        <a href="#click_browser_back_button">click_browser_back_button</a> |
+        <a href="#click_me">click_me</a> |
+        <a href="#click_me_using_action_chains">click_me_using_action_chains</a> |
+        <a href="#click_me_with_index">click_me_with_index</a> |
+        <a href="#click_using_text">click_using_text</a> |
+        <a href="#click_using_text_by_index">click_using_text_by_index</a> |
+        <a href="#close_browser">close_browser</a> |
+        <a href="#close_current_opened_tab">close_current_opened_tab</a> |
+        <a href="#close_tab_by_index">close_tab_by_index</a> |
+        <a href="#dismiss_the_alert">dismiss_the_alert</a> |
+        <a href="#double_click">double_click</a> |
+        <a href="#drag_and_drop">drag_and_drop</a> |
+        <a href="#element_displayed">element_displayed</a> |
+        <a href="#element_displayed_by_index">element_displayed_by_index</a> |
+        <a href="#element_should_be_clickable">element_should_be_clickable</a> |
+        <a href="#element_should_be_disappeared">element_should_be_disappeared</a> |
+        <a href="#element_should_be_displayed">element_should_be_displayed</a> |
+        <a href="#element_should_be_disabled">element_should_be_disabled</a> |
+        <a href="#element_should_be_enabled">element_should_be_enabled</a> |
+        <a href="#execute_java_script">execute_java_script</a> |
+        <a href="#get_alert_text">get_alert_text</a> |
+        <a href="#get_attribute_value">get_attribute_value</a> |
+        <a href="#get_checkbox_value">get_checkbox_value</a> |
+        <a href="#get_css_property">get_css_property</a> |
+        <a href="#get_current_url">get_current_url</a> |
+        <a href="#get_element_by_index">get_element_by_index</a> |
+        <a href="#get_radio_button_value">get_radio_button_value</a> |
+        <a href="#get_text_of_the_object">get_text_of_the_object</a> |
+        <a href="#get_value_from_cookie">get_value_from_cookie</a> |
+        <a href="#get_web_element">get_web_element</a> |
+        <a href="#get_window_title">get_window_title</a> |
+        <a href="#go_to_url">go_to_url</a> |
+        <a href="#is_alert_appear">is_alert_appear</a> |
+        <a href="#is_clickable_object">is_clickable_object</a> |
+        <a href="#is_current_url">is_current_url</a> |
+        <a href="#keyword_container">keyword_container</a> |
+        <a href="#log_and_requirement_covered">log_and_requirement_covered</a> |
+        <a href="#log_my_keyword_name_and_arguments">log_my_keyword_name_and_arguments</a> |
+        <a href="#maximize_browser_window">maximize_browser_window</a> |
+        <a href="#mouse_hover_on_element">mouse_hover_on_element</a> |
+        <a href="#open_chrome">open_chrome</a> |
+        <a href="#open_edge">open_edge</a> |
+        <a href="#open_firefox">open_firefox</a> |
+        <a href="#open_my_browser">open_my_browser</a> |
+        <a href="#press_home_key">press_home_key</a> |
+        <a href="#press_page_down_key">press_page_down_key</a> |
+        <a href="#press_page_up_key">press_page_up_key</a> |
+        <a href="#quit_browser">quit_browser</a> |
+        <a href="#refresh_page">refresh_page</a> |
+        <a href="#scroll_element_into_view">scroll_element_into_view</a> |
+        <a href="#scroll_specific_div">scroll_specific_div</a> |
+        <a href="#select_default_frame">select_default_frame</a> |
+        <a href="#select_frame">select_frame</a> |
+        <a href="#select_from_list_by_index">select_from_list_by_index</a> |
+        <a href="#select_from_list_by_value">select_from_list_by_value</a> |
+        <a href="#select_from_list_by_visible_text">select_from_list_by_visible_text</a> |
+        <a href="#select_tab_by_index">select_tab_by_index</a> |
+        <a href="#set_checkbox_value">set_checkbox_value</a> |
+        <a href="#set_default_timeout">set_default_timeout</a> |
+        <a href="#set_radio_button_value">set_radio_button_value</a> |
+        <a href="#submit_element">submit_element</a> |
+        <a href="#type_words">type_words</a> |
+        <a href="#wait_for_object">wait_for_object</a> |
+        <a href="#wait_for_object_disappear">wait_for_object_disappear</a> |
+        <a href="#wait_for_element_to_be_enabled">wait_for_element_to_be_enabled</a> |
+        <a href="#click_using_javascript">click_using_javascript</a> |
+        <a href="#wait_for_element_visible">wait_for_element_visible</a> |
+        <a href="#wait_for_element_visible">wait_for_element_visible</a> 
+
+
+    </div>
+    <div class="keyword_container">
+        <h2 id="type_words">type_words</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To type the data into the Input box or text area field</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            type_words
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            text: Text value to type into the locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                type_words((By.ID, "username"),"sample@mail.com")
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="element_displayed">element_displayed</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Used to find the respective element displayed or not</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            element_displayed
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                element_displayed((By.ID, "username"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True / False</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="click_me">click_me</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Used to click the object </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            click_me
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                click_me((By.ID, "sing-in-button"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="get_attribute_value">get_attribute_value</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To get the html attribute value of the element</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            get_attribute_value
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                            
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            attribute: HTML attribute value to get the data
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_attribute_value((By.XPATH, "//a[text()='privacy policy']"),"href")
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> It will return the attribute value. As per the above example it will return link value presents in the 'privacy policy'</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="append_text">append_text</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To append the data at into the Input box or text area field</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            append_text
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            text: Text value to type into the locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                append_text((By.ID, "username"),"ple@mail.com")   <br> # If 'sam' is the value already presents in the input box, output will be "sample@mail.com"
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="capture_screenshot">capture_screenshot</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Used to take the screen shot of the page </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            capture_screenshot
+                        </td>
+                        <td>
+                            filename: To give the name for the taken screen shot
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                capture_screenshot(filename.png)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="check_text_of_object">check_text_of_object</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To compare the text value presents in the locator with passed argument value
+                <br> It will fetch the text value from the locator. If the text is empty, it will fetch "value" attribute from the locator
+                <br> Then it will compare with the value you shared. Will return True/ False as per the comparision data
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            check_text_of_object
+                        </td>
+                        <td>
+                            locator: Path of the element where we need to validate the text value; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            text: Text value to compare with the fetched value
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                check_text_of_object((By.XPATH, "//dt[text()='Plan ID']/following-sibling::dd"),"556038860800")  
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True / False as per the comparision</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="clear_field">clear_field</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Used to clear the text data presents in the object (input/ text area, etc.,) </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            clear_field
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                clear_field((By.ID, "username"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="click_me_with_index">click_me_with_index</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To Click the element value using position if Xpath of the element is same for multiple objects
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            click_me_with_index
+                        </td>
+                        <td>
+                            locator: Path of the element where we need to validate the text value; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            pos: Position of the xpath. (index start from 1)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                click_me_with_index((By.XPATH, "//dt[text()='Plan ID']"),2)  
+                <br> # It will the second object of the page where the XPATH is same
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="click_using_text">click_using_text</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To Click the object which is having the text value </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            click_using_text
+                        </td>
+                        <td>
+                            text: text value presents in the object
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                click_using_text("Submit")  
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="click_using_text_by_index">click_using_text_by_index</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To Click the element value using position where the two text values of the button is same
+                <br> For example: If the page having two submit button with same name, it will click as per the position argument which you're passing
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            click_using_text_by_index
+                        </td>
+                        <td>
+                            text: Text value presents in the button
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            pos: Position of the button. (index start from 1)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                click_using_text_by_index("Submit",2)  
+                <br> # It will click the second submit button from the page
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="close_browser">close_browser</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To close the browser
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            close_browser
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                close_browser()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="double_click">double_click</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Used to double click the object </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            double_click
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                double_click((By.ID, "sing-in-button"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="execute_java_script">execute_java_script</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To execute the java script in the driver </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            execute_java_script
+                        </td>
+                        <td>
+                            script_data: query to execute in the driver
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                execute_java_script("console.log('Hello from JavaScript!');")
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="get_css_property">get_css_property</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To get the css property for the element</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            get_css_property
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                            
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            property_name: CSS property valye
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_css_property((By.XPATH, "//a[text()='privacy policy']"),"color")
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> It will return the css property value. As per the above example it will return color of the object</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="get_current_url">get_current_url</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To get the current url from the browser</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            get_current_url
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_current_url()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> It will return the current url from the browser</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="get_value_from_cookie">get_value_from_cookie</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To get the value from the cookie </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            get_value_from_cookie
+                        </td>
+                        <td>
+                            key: value of the "key" to extract from the data
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_value_from_cookie("beared_token")
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> It will return the css property value. As per the above example it will return color of the object</p>
+        </div>
+    </div>
+
+    <div class="keyword_container">
+        <h2 id="go_to_url">go_to_url</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To navigate the browser from current url to another url</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            go_to_url
+                        </td>
+                        <td>
+                            url: you should provide URL, where browser want to navigate
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                go_to_url("https://google.in")
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing</p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="is_clickable_object">is_clickable_object</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To identify the object is clickable or not</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            is_clickable_object
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                is_clickable_object((By.ID, "username"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True / False as per the object state</p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="is_current_url">is_current_url</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To validate the URL with current url value (exact URL with case sensitive value)</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            is_current_url
+                        </td>
+                        <td>
+                            url: URL to validate with the current browser URL
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                is_current_url("https://stage.myaccount.hp.com/orders")
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True / False as per the comparision value</p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="press_home_key">press_home_key</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To press the Home key button in your laptop keyboard</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            press_home_key
+                        </td>
+                        <td>
+                            input_field :  Used to identify the input field; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                press_home_key((By.XPATH, '//input[@type="submit"]'))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="press_page_down_key">press_page_down_key</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To press the Page Down key button in your laptop keyboard</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            press_page_down_key
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                press_page_down_key()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="press_page_up_key">press_page_up_key</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To press the Page Up key button in your laptop keyboard</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            press_page_up_key
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                press_page_up_key()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="refresh_page">refresh_page</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To refresh the browser</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            refresh_page
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                refresh_page()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="scroll_element_into_view">scroll_element_into_view</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To scroll the browser till the element visible</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            scroll_element_into_view
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                scroll_element_into_view((By.ID, "apply_changes"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="select_default_frame">select_default_frame</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To select the default frame in the Browser</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            select_default_frame
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                select_default_frame()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="select_frame">select_frame</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To select the frame as per the argument you're passing</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            select_frame
+                        </td>
+                        <td>
+                            name: you should pass the frame name to select
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                select_frame()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="select_tab_by_index">select_tab_by_index</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To select tab as per the argument. (Index start from:  1)</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            select_tab_by_index
+                        </td>
+                        <td>
+                            pos: you should pass the tab number
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p> 
+                select_tab_by_index(2)  
+                <br> # To select the second tab in the browser
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="set_default_timeout">set_default_timeout</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To give the default time out for waiting for object in seconds</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            set_default_timeout
+                        </td>
+                        <td>
+                            pos: you should pass the seconds value
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p> 
+                set_default_timeout(30)  
+                <br> # This timeout will be set default and it will applicable for entire suite
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="submit_element">submit_element</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To submit the data (submit - a > tag )</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            submit_element
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                submit_element((By.ID, "apply_changes"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="wait_for_object">wait_for_object</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> This keyword will wait for the object as per the time you passed</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            wait_for_object
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            timeout: Time in seconds to wait for the object
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                wait_for_object((By.ID, "apply_changes"), 10)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="wait_for_object_disappear">wait_for_object_disappear</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> This keyword will wait till the object disappeared. If time is exceeded than your time, will fail</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            wait_for_object_disappear
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            timeout: Time in seconds to wait to disappear the object
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                wait_for_object_disappear((By.ID, "apply_changes"), 10)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="is_alert_appear">is_alert_appear</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To validate whether the alert is available or not </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            is_alert_appear
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                is_alert_appear()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True / False as per the alert presents </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="get_alert_text">get_alert_text</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To get the alert value presents in the alert </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            get_alert_text
+                        </td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_alert_text()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> It will return the text value presents in the alert </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="accept_the_alert">accept_the_alert</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p>  To accept the alert presents in the browser</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            accept_the_alert
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                accept_the_alert()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="dismiss_the_alert">dismiss_the_alert</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p>  To dismiss the alert presents in the browser</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            dismiss_the_alert
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                dismiss_the_alert()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="alert_text_should_be">alert_text_should_be</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p>  To validate the alert text value with argument</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            alert_text_should_be
+                        </td>
+                        <td>
+                            text: text value to compare the alert text
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                alert_text_should_be("Are you sure want to close?")
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True / False as per the comparision value </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="set_checkbox_value">set_checkbox_value</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p>  To set the check box value. By default, It will check the check box(True state) </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            set_checkbox_value
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            value: True / False  (Check/ Uncheck) state you want.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                set_checkbox_value((By.XPATH, //input[text()="male"]), True)
+                <br> # it will check the check box state (checked - state)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="get_checkbox_value">get_checkbox_value</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p>  To get the check box value </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            get_checkbox_value
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_checkbox_value((By.XPATH, //input[text()="male"]))
+                <br> # it will return the status of the checkbox ( checked/ unchecked)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True/ False as per the state </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="close_current_opened_tab">close_current_opened_tab</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p>  To close the current opened tab in browser. By dafault it will navigate to first tab</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            close_current_opened_tab
+                        </td>
+
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                close_current_opened_tab()
+                <br> # it will close the current opened tab and by default it will select the first tab
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="drag_and_drop">drag_and_drop</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p>  It will move the element to target element locator. To acheive the drag and drop action </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td rowspan="2">
+                            drag_and_drop
+                        </td>
+                        <td>
+                            source_element: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            target_element: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                drag_and_drop((By.XPATH, //div[@id='automation_task']), (By.XPATH, //div[@id='closed']))
+                <br> # it will move the "automation_task" div to closed div place
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="get_window_title">get_window_title</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To get the window title </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+                            get_window_title
+                        </td>     
+                    </tr>              
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_window_title()
+                <br> # it will return the title of the window
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> window title </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="click_browser_back_button">click_browser_back_button</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To click the back button in the browser </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+                            click_browser_back_button
+                        </td>     
+                    </tr>              
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                click_browser_back_button()
+                <br> # To click the browser back button
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="maximize_browser_window">maximize_browser_window</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To maximize the browser window </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+                            maximize_browser_window
+                        </td>     
+                    </tr>              
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                maximize_browser_window()
+                <br> # To maximize the browser
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="mouse_hover_on_element">mouse_hover_on_element</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To hover the mouse on the target element</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+                            mouse_hover_on_element
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                mouse_hover_on_element((By.XPATH, //div[@id='automation_task']))
+                <br> # it will hover the mouse on the element
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="get_radio_button_value">get_radio_button_value</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p>  To set the radio button value. </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            get_radio_button_value
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_radio_button_value((By.XPATH, //input[text()="male"]))
+                <br> # it will return the status of the radio button ( checked/ unchecked)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True/ False as per the state </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="set_radio_button_value">set_radio_button_value</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p>  To set the radio button value. By default, It will check the radio button(True state) </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            set_radio_button_value
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            value: True / False  (Check/ Uncheck) state you want.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                set_radio_button_value((By.XPATH, //input[text()="male"]), True)
+                <br> # it will check the check box state (checked - state)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="select_from_list_by_index">select_from_list_by_index</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To select the dropdown using index value </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            select_from_list_by_index
+                        </td>
+                        <td>
+                            locator: Used to identify the element path; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            value: index value to select
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                select_from_list_by_index((By.XPATH, //select[@name="status"]), 2)
+                <br> # it will select the value in the drop down using index value
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="select_from_list_by_value">select_from_list_by_value</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To select the dropdown using value attribute </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            select_from_list_by_value
+                        </td>
+                        <td>
+                            locator: Used to identify the dropdown; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            value: value of the element
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                select_from_list_by_value((By.XPATH, //select[@name="status"]), "ferrari")
+                <br> # it will select the value in the drop down using value attribute
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="select_from_list_by_visible_text">select_from_list_by_visible_text</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To select the dropdown using text value </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>ssss
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            select_from_list_by_visible_text
+                        </td>
+                        <td>
+                            locator: Used to identify the dropdown; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            value: text value in the label
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                select_from_list_by_visible_text((By.XPATH, //select[@name="status"]), "ferrari")
+                <br> # it will select the value in the drop down using text value
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="quit_browser">quit_browser</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To quit the browser (It will close the browser even if multiple browsers(tabs) opened)
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            quit_browser
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                quit_browser()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="open_chrome">open_chrome</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> It will open the chromw browser </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            open_chrome
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                open_chrome()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> driver object of the chrome browser</p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="open_firefox">open_firefox</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> It will open the firefox browser </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            open_firefox
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                open_firefox()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> driver object of the firefox browser </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="open_edge">open_edge</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> It will open the Edge browser </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            open_edge
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                open_edge()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> driver object of the edge browser </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="open_my_browser">open_my_browser</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> It will open the browser which you mentioned in the input_data.json file
+                <span style="font-weight: bold;"><br>Note:</span> If any error occured or browser name not mentioned in the file, it will open chrome browser by default </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            open_my_browser
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                open_my_browser()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> driver object of the edge browser </p>
+        </div>
+    </div>
+<div class="keyword_container">
+        <h2 id="log_and_requirement_covered">log_and_requirement_covered</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To Log the requirement number into the log file </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            log_and_requirement_covered
+                        </td>
+                        <td>
+                            requirement_number: Requirement number to Log
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                log_and_requirement_covered("ECOTEST-2065")
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> nothing </p>
+        </div>
+    </div>
+<div class="keyword_container">
+        <h2 id="get_text_of_the_object">get_text_of_the_object</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To Log the requirement number into the log file </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            get_text_of_the_object
+                        </td>
+                        <td>
+                            locator: Used to identify the dropdown; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_text_of_the_object((By.XPATH, "//h2[@id='Header']))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Text value of the object </p>
+        </div>
+    </div>
+<div class="keyword_container">
+        <h2 id="close_tab_by_index">close_tab_by_index</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To close the tab using the index number </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            close_tab_by_index
+                        </td>
+                        <td>
+                            index_number: Position of the tab to close
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                close_tab_by_index(4)
+                <br> By Default it will select the first tab automatically
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+<div class="keyword_container">
+        <h2 id="get_element_by_index">get_element_by_index</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To get the web element when there is a multiple elements having same locator </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            get_element_by_index
+                        </td>
+                        <td>
+                            locator: Used to identify the web element; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            pos: Position of the elements as integer
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_element_by_index((By.XPATH, "//h2[@id='Header']), 2)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Web Element object </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="element_displayed_by_index">element_displayed_by_index</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To get the web element displayed status when there is a multiple elements having same locator </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            get_element_by_index
+                        </td>
+                        <td>
+                            locator: Used to identify the web element; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            pos: Position of the elements as integer
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                element_displayed_by_index((By.XPATH, "//h2[@id='Header']), 2)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True/ False </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="get_web_element">get_web_element</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To get the web element for the locator</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            get_web_element
+                        </td>
+                        <td>
+                            locator: Used to identify the web element; Should be tuple with two values. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_web_element((By.XPATH, "//h2[@id='Header']))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Web element object </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="click_me_using_action_chains">click_me_using_action_chains</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To click the element using ActionChains method</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            click_me_using_action_chains
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                click_me_using_action_chains((By.XPATH, "//h2[@id='Header']))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="log_my_keyword_name_and_arguments">log_my_keyword_name_and_arguments</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To log the function name arguments used in it</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            log_my_keyword_name_and_arguments
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                log_my_keyword_name_and_arguments()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+            <p> It will help you to add those details into the log file </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="scroll_specific_div">scroll_specific_div</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To scroll the specific div in the web page</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            scroll_specific_div
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                scroll_specific_div((By.ID, "scroll_div"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="change_screen_size">change_screen_size</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To change the browser zoom size </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            change_screen_size
+                        </td>
+                        <td>
+                            size: size of zoom you want in browser in % value
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                change_screen_size(50)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="element_should_be_displayed">element_should_be_displayed</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Expected element should be displayed </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3">
+                            element_should_be_displayed
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        timeout: Time to wait for the element to be displayed <br>
+                        Note: Optional Argument (By default it will take basic wait time, if you not passed value)
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                element_should_be_displayed((By.ID, "scroll_div"), 10)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="element_should_be_clickable">element_should_be_clickable</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Expected element should be clickable </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            element_should_be_clickable
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        timeout: Time to wait for the element to be clickable <br>
+                        Note: Optional Argument (By default time is : 1)
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                element_should_be_clickable((By.ID, "clickable_obj"), 2)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="element_should_be_disappeared">element_should_be_disappeared</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Expected element should be disappeared in web page </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            element_should_be_disappeared
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        timeout: Time to wait for disappeared <br>
+                        Note: Optional Argument (By default time is : 3)
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                element_should_be_disappeared((By.ID, "clickable_obj"), 5)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="back_to_body_from_frame">back_to_body_from_frame</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> To move the driver from the frame to body </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            back_to_body_from_frame
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                back_to_body_from_frame()
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="wait_for_element_to_be_enabled">wait_for_element_to_be_enabled</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> It will for element to be enabled state </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            wait_for_element_to_be_enabled
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        timeout: Time to wait for element to be enabled <br>
+                        Note: Optional Argument (By default time is : 10)
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                wait_for_element_to_be_enabled((By.ID, "clickable_obj"), 5)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="click_using_javascript">click_using_javascript</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> It will click the element using javascript </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            click_using_javascript
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                click_using_javascript((By.ID, "clickable_obj"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="wait_for_element_visible">wait_for_element_visible</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> It will wait till the element visible in the page </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">
+                            wait_for_element_visible
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        timeout: Time to wait for element to be visible <br>
+                        Note: Optional Argument (By default time is : 20)
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                wait_for_element_visible((By.ID, "clickable_obj"), 12)
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> Nothing </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="get_element_enable_status">get_element_enable_status</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Enabled status of the element </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            get_element_enable_status
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                get_element_enable_status((By.ID, "clickable_obj"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> True / False </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="element_should_be_disabled">element_should_be_disabled</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Element should be disabled in the page </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            element_should_be_disabled
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                element_should_be_disabled((By.ID, "clickable_obj"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> It will raise error if element is enabled </p>
+        </div>
+    </div>
+    <div class="keyword_container">
+        <h2 id="element_should_be_enabled">element_should_be_enabled</h2>
+        <div class="kw-docs">
+            <h4>Documentation</h4>
+            <p> Element should be enabled in the page </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Keyword </th>
+                        <th> Arguments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            element_should_be_enabled
+                        </td>
+                        <td>
+                            locator: Used to identify the web element. 1. locator (id, class, css selector, etc.,) 2. Value of locator
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="font-weight: bold;"> Example :</h4>
+            <p>
+                element_should_be_enabled((By.ID, "clickable_obj"))
+            </p>
+            <br>
+            <p> <span style="font-weight: bold;">Return: </span> It will raise error if element is disabled </p>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        const elements = document.getElementsByClassName("keyword_container");
+
+        const idArray = Array.from(elements).map(element => element.querySelector("h2").id);
+        idArray.sort();
+
+        const container = document.body;
+
+        idArray.forEach(id => {
+            const element = document.querySelector(`.keyword_container h2[id="${id}"]`).closest(".keyword_container");
+            container.appendChild(element);
+        });
+    </script>
+</body>
+</html>
+

@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 
 class BoardPageLocators:
 
+    """A class for board page locators. All board page locators should come here"""
+
     board_title = (By.XPATH, '//h1[@data-testid="board-name-display"]')
     add_another_list_button = (By.XPATH, '//button[@data-testid="list-composer-button"]')
     to_do_add_card_button = (By.XPATH, '//h2[text()="To Do"]/ancestor::li//button[@data-testid="list-add-card-button"]')

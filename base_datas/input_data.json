@@ -4,7 +4,7 @@
         "edge",
         "firefox",
         "chrome"
-    ],
+    ], 
     "video record": true,
     "environment": "stage",
     "magento_environment": "pie",

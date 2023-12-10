@@ -31,7 +31,7 @@ The project is organized into the following folders:
 ## Keywords for Web Automation
 
 This project includes a rich set of keywords for web automation, making it easy to express various actions in your test cases. Here are some of the key keywords available in the project:
-You can see all the keywords, arguments and returned data explained in basic_actions.html file.
+You can see all the keywords, arguments and returned data explained in  `#f03c15`basic_actions.html file.
 
 
 - **click:** Simulate a click action on a web element.

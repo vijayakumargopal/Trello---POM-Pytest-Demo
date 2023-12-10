@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 
 def get_parent_framework_path():
@@ -36,3 +37,21 @@ def create_screenshots_folder():
     if not os.path.exists(screenshot_path):
         os.makedirs(screenshot_path)
     return screenshot_path
+
+
+def generate_encrypted_password(password):
+    framework_path = get_parent_framework_path()
+    credentials_path = os.path.join(framework_path, "utilities", "credentials_generation.exe")
+    execution_command = credentials_path + " encrypt " + password
+    output = subprocess.check_output(execution_command, shell=True, stderr=subprocess.STDOUT, text=True)
+    output.strip()
+    return output
+
+
+def decrypt_password(password):
+    framework_path = get_parent_framework_path()
+    credentials_path = os.path.join(framework_path, "utilities", "credentials_generation.exe")
+    execution_command = credentials_path + " decrypt " + password
+    output = subprocess.check_output(execution_command, shell=True, stderr=subprocess.STDOUT, text=True)
+    output.strip()
+    return output

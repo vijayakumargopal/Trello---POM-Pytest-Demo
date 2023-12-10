@@ -8,6 +8,7 @@
     "video record": true,
     "environment": "stage",
     "magento_environment": "pie",
+    "fernet_key": "Pas6GpCEU8xZQPEZx0OcgR9oq01vOJQG4UGtZ3fXL9s=",
     "environments": {
         "pie": "put_pie_url_here",
         "stage": "https://id.atlassian.com/login"

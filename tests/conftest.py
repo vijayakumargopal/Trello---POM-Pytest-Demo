@@ -83,5 +83,3 @@ def open_browser_test_startup(request):
         screen_record.stop_record_loop()
     basic_actions.close_browser()
 
-
-

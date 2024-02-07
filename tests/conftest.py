@@ -82,4 +82,3 @@ def open_browser_test_startup(request):
     if fetch_data_from_input_data("video record"):
         screen_record.stop_record_loop()
     basic_actions.close_browser()
-
